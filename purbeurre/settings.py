@@ -35,7 +35,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # False if ENV=prod, by default, ENV=development (True)
 DEBUG = False if ENV == "production" else True
 
-ALLOWED_HOSTS = ['miam-purbeurre.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["104.236.207.103"]
 
 
 # Application definition
@@ -112,10 +112,11 @@ else:
             "ENGINE": "django.db.backends.postgresql_psycopg2",
             "NAME": os.getenv("DB_NAME"),
             "USER": os.getenv("DB_USER"),
-            'HOST': os.getenv("HOST"),
+            "PASSWORD": os.getenv("DB_PASSWORD"),
+            "HOST": os.getenv("HOST"),
             "PORT": os.getenv("PORT"),
         }
-}
+    }
 
 
 # Password validation
@@ -155,14 +156,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
 # Whitenoise manages static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+if ENV == "production":
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # Dj Crispy forms library
 CRISPY_TEMPLATE_PACK = "bootstrap4"
