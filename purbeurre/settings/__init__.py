@@ -22,7 +22,8 @@ load_dotenv(find_dotenv())
 ENV = os.environ.get("ENV", "development")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +36,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # False if ENV=prod, by default, ENV=development (True)
 DEBUG = False if ENV == "production" else True
 
-ALLOWED_HOSTS = ["104.236.207.103"]
+ALLOWED_HOSTS = [
+    "104.236.207.103",
+    "miam-purbeurre.herokuapp.com",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
