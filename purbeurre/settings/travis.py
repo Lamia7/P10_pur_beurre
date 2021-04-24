@@ -3,7 +3,7 @@ import os
 from . import *
 
 
-SECRET_KEY = os.environ.get("TRAVIS_SECRET_KEY")
+SECRET_KEY = "travis_secret_key"
 
 DATABASES = {
     "default": {
