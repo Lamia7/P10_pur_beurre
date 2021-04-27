@@ -31,7 +31,7 @@ class SeleniumRegisterTest(StaticLiveServerTestCase):
         # cls.driver.implicitly_wait(10)
 
         # SUPPR
-        geckodriver = f"{BASE_DIR}/webdrivers/geckodriver"
+        geckodriver = str(BASE_DIR / "webdrivers" / "geckodriver")
 
         print(geckodriver)
         print(f"BASE DIR: {BASE_DIR}")
@@ -39,6 +39,7 @@ class SeleniumRegisterTest(StaticLiveServerTestCase):
             executable_path=geckodriver, options=firefox_options
         )
         cls.driver.implicitly_wait(10)
+        cls.driver.maximize_window()
 
     @classmethod
     def tearDownClass(cls):

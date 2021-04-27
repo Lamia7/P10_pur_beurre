@@ -5,21 +5,28 @@ python:
 addons:
   firefox: latest
 
-install:
-  - pip install -r requirements.txt
+#before_install:
+#- wget "https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux64.tar.gz"
+#- tar xfz geckodriver-v0.29.0-linux64.tar.gz
+#- sudo mv geckodriver /usr/local/bin
 
 # safelist (indicate the only branches to check)
 branches:
   only:
     - master
 
+install:
+  - pip install -r requirements.txt
+
 before_script:
   - install-webdrivers --path webdrivers
 
-env: DJANGO_SETTINGS_MODULE="purbeurre.settings.travis"
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE="purbeurre.settings.travis"
 
 services:
   - postgresql
 
 script:
-  - python ./manage.py test
+  - python manage.py test
