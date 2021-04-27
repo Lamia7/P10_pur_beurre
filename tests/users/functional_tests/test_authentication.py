@@ -2,22 +2,39 @@
 Functional test using Selenium to test the behavior
 Check README file to to launch this test.
 """
+import os
+
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
-import os
+from purbeurre.settings import BASE_DIR
+
+
+# SUPPR
+firefox_options = webdriver.FirefoxOptions()
+firefox_options.headless = True
 
 
 class SeleniumRegisterTest(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        firefox_options = Options()
-        firefox_options.add_argument("--headless")
-        geckodriver = os.getcwd() + "/geckodriver"
-
+        # firefox_options = Options()
+        # firefox_options.add_argument("--headless")
+        # geckodriver = os.getcwd() + "/geckodriver"
         # print(geckodriver)
+        # print(f"BASE DIR: {BASE_DIR}")
+        # cls.driver = webdriver.Firefox(
+        #    executable_path=geckodriver, options=firefox_options
+        # )
+        # cls.driver.implicitly_wait(10)
+
+        # SUPPR
+        geckodriver = f"{BASE_DIR}/webdrivers/geckodriver"
+
+        print(geckodriver)
+        print(f"BASE DIR: {BASE_DIR}")
         cls.driver = webdriver.Firefox(
             executable_path=geckodriver, options=firefox_options
         )
