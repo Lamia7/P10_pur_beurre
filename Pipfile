@@ -17,6 +17,7 @@ selenium = "*"
 gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
+tchappui-webdrivers = "*"
 
 [dev-packages]
 
