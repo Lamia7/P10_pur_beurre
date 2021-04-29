@@ -18,6 +18,7 @@ gunicorn = "*"
 whitenoise = "*"
 dj-database-url = "*"
 tchappui-webdrivers = "*"
+sentry-sdk = "*"
 
 [dev-packages]
 
